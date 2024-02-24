@@ -6,7 +6,7 @@ public class PalindromeChecker {
 public void tester()
 {
   //String lines[] = loadStrings("palindromes.txt");
-  String[] lines = new String[6]; 
+  String[] lines = new String[6];
     try{
         File myFile = new File("palindromes.txt");
         Scanner myReader = new Scanner(myFile);
@@ -23,7 +23,7 @@ public void tester()
         e.printStackTrace();
     }
   System.out.println("there are " + lines.length + " lines");
-  for (int i=0; i < lines.length; i++) 
+  for (int i=0; i < lines.length; i++)
   {
     if(palindrome(lines[i])==true)
     {
@@ -37,13 +37,45 @@ public void tester()
 }
 public boolean palindrome(String word)
 {
-  //your code here
+ String hey = new String();               // letters only
+  for (int i =0; i<word.length(); i++)
+  {
+if(Character.isLetter(word.charAt(i)))
+hey+=word.charAt(i);
+  }
+ 
+    String checka = new String();
+  for (int i=0; i<hey.length(); i++){
+    if (hey.charAt(i)!=' ')
+checka+=hey.charAt(i);    
+  }
+ checka = checka.toLowerCase();
+ 
+  if (checka.equals(reverse(word)))
+  return true;
   return false;
 }
 public String reverse(String str)
 {
-    String sNew = new String();
-    //your code here
+  String somet = new String();               // letters only
+  for (int i =0; i<str.length(); i++)
+  {
+if(Character.isLetter(str.charAt(i)))
+somet+=str.charAt(i);
+  }
+ 
+    String wasup = new String();
+  for (int i=0; i<somet.length(); i++){
+    if (somet.charAt(i)!=' ')
+wasup+=somet.charAt(i);    
+  }
+ 
+    String sNew = new String();            
+   for (int s = wasup.length()-1;s>=0; s--)
+   {
+     sNew+=wasup.charAt(s);
+   }
+sNew=sNew.toLowerCase();
     return sNew;
 }
 }
